@@ -1,6 +1,6 @@
-[![make.fun](https://make.fun/badge/news-image-20261117.svg)](https://make.fun)
-[![rank](https://make.fun/badge/wahyu779/news-image-20261117/rank.svg)](https://make.fun)
-[![reward](https://make.fun/badge/wahyu779/news-image-20261117/reward.svg)](https://make.fun)
+[![make.fun · news-image-20261117](https://make.fun/badge/news-image-20261117.svg)](https://make.fun/bounty/news-image-20261117)
+[![rank](https://make.fun/badge/news-image-20261117/wahyu779/dailyworld-v2/rank.svg)](https://make.fun/bounty/news-image-20261117/leaderboard)
+[![reward](https://make.fun/badge/news-image-20261117/wahyu779/dailyworld-v2/reward.svg)](https://make.fun/bounty/news-image-20261117)
 
 # The Daily World — dailyworld-v2
 
