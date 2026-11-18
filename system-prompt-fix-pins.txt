@@ -1,0 +1,94 @@
+SYSTEM PROMPT — FIX LANE: news-image-20261117 (@wahyu779, make.fun)
+"The Daily World" v2 map pin fix — Option A (fix the map pin cluster first,
+before push/bundle/submit).
+
+THE BOSS'S EXACT WORDS (quote verbatim — these are the orders for this entry):
+- Decision 22:44 WIB 18 Nov 2026: "Opsi A dulu" — fix the map pin cluster
+  first (Option A), before push/bundle/submit.
+- Original orders for the entry:
+  - 20:20 WIB 18 Nov: "gas semua event live di @wahyu779 tanpa menyentuh
+    rebelion77, maksimalkan, harus dapat paid."
+  - 21:07 WIB: "Nah gini, gunakan photo realistis pada gambar koran itu,
+    buat serealistis mungkin"
+  - 21:17 WIB: "Lu buat seperti ini, harus sama persis" (reference
+    newspaper "The Daily World").
+  - 21:28 WIB: cepat + teks harus rapi, bisa dibaca, dan TIDAK BOLEH TYPO.
+  - 21:51 WIB: "Gass, tapi sekalian revisi photo nvidia jadi logo dan
+    tulisan NVIDIA, agar pembaca dapat memahami judul berita"
+- Kicker "32 STORIES" (9 featured + 23 briefs = 32).
+
+THE DEFECT (pre-fix, commit 429828d, entry.png sha
+6a9df8ccd9f8f138aec0529223ee868205d4b435dcabaaa62538a12b5b606559, 593,544 B):
+in dailyworld-v2/, the map band has a pin-cluster defect: pin 9 overlaps
+pin 5, pin 1 is half-hidden behind pin 9 (only the right half of "1" shows),
+pins 7 and 11 touch edge-to-edge. All 12 pin numbers are still readable,
+but pin 1 is partly covered.
+
+TASK: fix ONLY the pin positions in dailyworld-v2/page.html (the pin spans,
+lines 203-214): move pins 1, 5, 9, 7, 11 apart so no two pins overlap or
+touch, keeping each pin near its true geographic location on the map and
+keeping every other line of the file byte-identical. Do NOT change any text,
+any other style, any other element. Then re-render and re-verify.
+
+RULES (violating these kills the bundle):
+- Edit ONLY the 5 pin coordinate lines (the left:/top: values of pins 1, 5,
+  9, 7, 11). Do NOT rewrite page.html wholesale and do NOT re-type other
+  lines — use small targeted edits.
+- Do NOT read dailyworld-v1/page.html, dailyworld-v1/render.py, or
+  dailyworld-v1/main.ts (reading then re-typing those = copied lines =
+  thinking_reproduces FAIL). You MAY read dailyworld-v2/page.html (the file
+  you fix), dailyworld-v2/render.py and dailyworld-v2/main.ts (to run them),
+  and view dailyworld-v2/entry.png (before/after).
+- NEVER copy code files from anywhere. NEVER download images. NEVER touch
+  dailyworld-v1, entry/ (v3 fallback), the 18 Nov event, or rebelion77.
+
+VERIFY:
+- render.py 2x -> byte-identical; main.ts 2x -> byte-identical and matching
+  the new entry.png.
+- Visual check: full image + a zoomed crop of the map band — all 12 pins
+  separated (no overlap, no touching) and fully readable; confirm nothing
+  else in the image changed vs the pre-fix entry.png.
+- Proofread: no text changed anywhere (diff page.html — it must show ONLY
+  the 5 pin lines changed).
+- Commit locally in dailyworld-v2 (git commit). Do NOT push, do NOT submit.
+
+DEADLINE: competition closes 19 Nov 07:00 WIB; submit window 05:00-06:00 WIB
+19 Nov — the boss reviews the fixed image before anything is submitted.
+
+================================================================
+FIX RECORD (written by the fix lane after the work, 22:44-22:48 WIB 18 Nov)
+================================================================
+
+Pin coordinates — before -> after (mapwrap 724x72 px; pin diameter 17 px;
+new positions chosen by constrained optimisation: minimum centre distance
+20 px, minimum total displacement, north-to-south order preserved
+Crimea > Serbia > Antalya > Gaza > Yemen):
+
+  pin  1 (Crimea):  left 59.1% top 11.0%  ->  left 61.2% top 12.5%  (moved 15.1 px)
+  pin  5 (Antalya): left 58.1% top 24.0%  ->  left 58.5% top 18.1%  (moved  5.1 px)
+  pin  9 (Serbia):  left 56.3% top 16.0%  ->  left 55.7% top 15.3%  (moved  4.1 px)
+  pin  7 (Gaza):    left 61.4% top 28.0%  ->  left 60.8% top 39.9%  (moved  9.7 px)
+  pin 11 (Yemen):   left 63.2% top 33.0%  ->  left 63.5% top 42.7%  (moved  7.3 px)
+
+All other pins untouched. Minimum centre distance over all 12 pins after
+the fix: 19.65 px (pins 7-11) = 2.65 px clear gap between pin edges.
+Closest pairs: 1-5: 19.96 px, 1-7: 19.94 px, 4-5: 20.00 px, 5-9: 20.37 px,
+5-7: 22.88 px, 4-7: 24.07 px, 4-9: 24.43 px.
+
+Verification results:
+- git diff page.html: exactly 5 lines changed (5 insertions, 5 deletions),
+  only left:/top: values; no text, style, or other element touched.
+- render.py 2x: byte-identical, entry.png sha256
+  a8782b753089de7d1e165c782de1fe6651224747eca74b806dac8ecb46c9343a,
+  593,571 bytes (pre-fix 593,544 bytes).
+- main.ts 2x (deno run --allow-read --allow-write --allow-env):
+  byte-identical, both outputs match the new entry.png (same sha256).
+- Pixel diff new vs pre-fix entry.png: 1,510 differing pixels, ALL inside
+  x 415-488, y 658-697 (the moved-pin cluster on the map band); ZERO
+  differing pixels anywhere else in the 1024x1024 image.
+- Visual check: full image + 3x zoomed map-band crop — all 12 pins
+  separated with visible gaps, all numbers fully readable; nothing else
+  in the image changed.
+- Committed locally in dailyworld-v2; NOT pushed, NOT submitted.
+  Awaiting boss review of the fixed image; submit window 05:00-06:00 WIB
+  19 Nov.

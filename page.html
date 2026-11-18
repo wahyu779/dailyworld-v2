@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Daily World — Tuesday 17 November 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #e8ddc0; }
+  body { font-family: "Liberation Serif", Georgia, "Noto Serif", "DejaVu Serif", serif; color: #141414; }
+  .sheet {
+    width: 1024px; height: 1024px; margin: 0 auto; overflow: hidden;
+    background: #f3ead2; padding: 4px 20px 4px;
+  }
+  .red { color: #a81c22; }
+  /* ---- top eyebrow ---- */
+  .topline { border-top: 3px solid #141414; border-bottom: 1px solid #141414; height: 4px; }
+  .eyebrow {
+    text-align: center; font-size: 11.5px; letter-spacing: 4px; font-weight: 700;
+    padding: 3px 0 2px;
+  }
+  .masthead { text-align: center; padding: 2px 0 3px; }
+     .masthead img { width: 400px; height: auto; display: block; margin: 0 auto; }
+  /* ---- dateline ---- */
+  .dateline {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1.5px solid #141414; border-bottom: 1px solid #141414;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.4px; padding: 2px 2px;
+  }
+  .dateline .mid { letter-spacing: 1.5px; }
+  /* ---- kicker strip ---- */
+  .kicker {
+    text-align: center; font-size: 14px; font-weight: 700; letter-spacing: 2.5px;
+    padding: 3px 0 4px; border-bottom: 2px solid #141414;
+  }
+  .kicker b { font-weight: 700; }
+  /* ---- shared story bits ---- */
+  .tag { color: #a81c22; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; }
+  .hed { font-weight: 700; line-height: 1.05; }
+  .deck { font-weight: 700; line-height: 1.15; }
+  .body { font-size: 11.5px; line-height: 1.26; }
+  .body p + p { margin-top: 6px; }
+  .page { font-size: 11.5px; font-weight: 700; margin-top: 4px; }
+  /* ---- top row: 3 columns ---- */
+  .toprow {
+    display: flex; border-bottom: 2px solid #141414;
+  }
+  .topcol { flex: 1; padding: 7px 10px 6px; }
+  .topcol + .topcol { border-left: 1px solid #141414; }
+  .topcol .tag { font-size: 12px; }
+  .topcol .hed { font-size: 23px; margin: 2px 0 3px; }
+  .topcol .deck { font-size: 13px; margin-bottom: 5px; }
+  .topflex { display: flex; gap: 9px; align-items: flex-start; }
+  .topflex .txt { flex: 1; }
+  .topflex img { width: 100px; height: 198px; object-fit: cover; display: block; flex: none; }
+  .topcol .body { font-size: 11px; line-height: 1.24; }
+  /* ---- second row: 4 photo cards ---- */
+  .row2 { display: flex; border-bottom: 2px solid #141414; }
+  .card { flex: 1; padding: 7px 8px 6px; }
+  .card + .card { border-left: 1px solid #141414; }
+  .card img { width: 100%; height: 80px; object-fit: cover; display: block; margin-bottom: 5px; }
+  .card img.nv { object-fit: cover; background: #000; }
+  .card .hed { font-size: 16px; margin: 2px 0 3px; }
+  .card .body { font-size: 11px; line-height: 1.22; }
+  /* ---- map band ---- */
+  .mapband { border-bottom: 2px solid #141414; padding: 4px 0 5px; }
+  .mapband h2, .also h2 {
+    text-align: center; font-size: 14px; font-weight: 700; letter-spacing: 3px; margin-bottom: 2px;
+  }
+  .mapflex { display: flex; gap: 12px; align-items: stretch; }
+  .mapwrap { position: relative; flex: none; width: 724px; height: 72px; }
+  .mapwrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pin {
+    position: absolute; width: 17px; height: 17px; margin: -8.5px 0 0 -8.5px;
+    background: #c81e1e; border: 1.5px solid #fff; border-radius: 50%;
+    color: #fff; font-size: 10px; font-weight: 700; line-height: 14px; text-align: center;
+    font-family: "Noto Sans", "DejaVu Sans", sans-serif;
+  }
+  .legend { flex: 1; font-size: 11px; line-height: 1.45; padding-top: 4px; }
+  .legend b { color: #a81c22; }
+  /* ---- bottom minis: 5 columns ---- */
+  .minis { display: flex; border-bottom: 2px solid #141414; }
+  .mini { flex: 1; padding: 5px 7px 4px; }
+  .mini + .mini { border-left: 1px solid #141414; }
+  .mini .tag { font-size: 10.5px; }
+  .mini .hed { font-size: 11px; margin: 2px 0 3px; }
+  .miniflex { display: flex; gap: 7px; align-items: flex-start; }
+  .miniflex .txt { flex: 1; }
+  .miniflex .txt .body { font-size: 10.5px; line-height: 1.25; }
+  .miniflex img { width: 46px; height: 46px; object-fit: cover; display: block; flex: none; }
+  .mini .page { font-size: 11px; }
+  /* ---- ALSO ON ---- */
+  .also { padding: 5px 0 3px; }
+  .alsocols { display: flex; gap: 16px; }
+  .alsocol { flex: 1; font-size: 8.5px; line-height: 1.2; }
+  .alsocol p { margin-bottom: 2px; text-align: left; }
+  .alsocol b { color: #a81c22; }
+  .alsocol .lead { font-weight: 700; }
+  /* ---- footer ---- */
+  .footer {
+    border-top: 1.5px solid #141414; margin-top: 2px; padding-top: 2px;
+    text-align: center; font-size: 10px; line-height: 1.3;
+  }
+  .footer .src { font-weight: 700; font-size: 10px; letter-spacing: 0.5px; margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="topline"></div>
+  <div class="eyebrow">THE WORLD&rsquo;S NEWS IN ONE PICTURE</div>
+  <div class="masthead"><img src="assets/masthead.png" alt="The Daily World"></div>
+
+  <div class="dateline">
+    <span>VOL. 142&nbsp; NO. 31877</span>
+    <span class="mid">TUESDAY, 17 NOVEMBER 2026</span>
+    <span>INTERNATIONAL EDITION &bull; $2.00</span>
+  </div>
+
+  <div class="kicker"><b>32 STORIES</b> &bull; 6 CONTINENTS &bull; WAR &bull; DIPLOMACY &bull; HEALTH &bull; CLIMATE &bull; MARKETS &bull; SPORT</div>
+
+  <!-- top row -->
+  <div class="toprow">
+    <div class="topcol">
+      <div class="topflex">
+        <div class="txt">
+          <div class="tag">EUROPE &bull; WAR</div>
+          <div class="hed">Crimea Bridge Falls Into the Sea</div>
+          <div class="deck">Russian supply route struck in major blow</div>
+          <div class="body">
+            <p>Ukraine hit the 19-kilometre bridge to Crimea for a second day running. Its road arch and a road span dropped into the strait, cutting the road link; two people were killed, the Russian-installed governor said. Rail traffic later resumed.</p>
+            <p>Zelenskyy called it a seven-stage operation over weeks against air defences, radar and jamming.</p>
+          </div>
+          <div class="page">PAGE 3 &rsaquo;</div>
+        </div>
+        <img src="assets/kerch.jpg" alt="The Crimea bridge burning">
+      </div>
+    </div>
+    <div class="topcol">
+      <div class="tag">MIDDLE EAST &bull; THE GULF</div>
+      <div class="hed">Gulf on a Knife-Edge</div>
+      <div class="deck">Tensions rise as Iran warns US</div>
+      <div class="body">
+        <p>American jets struck a Revolutionary Guard launch site at Qeshm, reports said, as Iranian drones aimed at a US radar in Bahrain were shot down. A fourth tanker in a day caught fire in the Strait of Hormuz after a mine strike; Iran said it had seized a US drone.</p>
+        <p>All sides&rsquo; claims are unconfirmed. Trump warned Iran would pay a huge price for any attack on US soil.</p>
+      </div>
+      <div class="page">PAGE 7 &rsaquo;</div>
+    </div>
+    <div class="topcol">
+      <div class="topflex">
+        <div class="txt">
+          <div class="tag">ASIA &bull; DIPLOMACY</div>
+          <div class="hed">Quad Meets in Manila</div>
+          <div class="deck">US, India, Australia and Japan deepen ties</div>
+          <div class="body">
+            <p>The leaders of the United States, India, Australia and Japan sat down in Manila for about ninety minutes &mdash; the first Quad summit since September 2024, the first of President Trump&rsquo;s second term, and the first held in a country outside the group.</p>
+            <p>Critical minerals, supply chains, sea security and shipping safety topped the agenda. Next: a first-ever Xi&ndash;Trump&ndash;Putin meeting in Shenzhen on Thursday.</p>
+          </div>
+          <div class="page">PAGE 10 &rsaquo;</div>
+        </div>
+        <img src="assets/quad.jpg" alt="The four Quad leaders in Manila">
+      </div>
+    </div>
+  </div>
+
+  <!-- second row: four photo cards -->
+  <div class="row2">
+    <div class="card">
+      <img src="assets/ebola-ppe.jpg" alt="Health worker in protective gear">
+      <div class="tag">AFRICA &bull; HEALTH</div>
+      <div class="hed">Ebola Toll Passes 11,000 Cases</div>
+      <div class="body">DR Congo&rsquo;s outbreak doubled in three months, the WHO said: about 5,400 dead, 400&ndash;500 new cases a week, no licensed vaccine for this strain.</div>
+      <div class="page">PAGE 12 &rsaquo;</div>
+    </div>
+    <div class="card">
+      <img src="assets/cop31.jpg" alt="COP31 summit hall">
+      <div class="tag">GLOBAL &bull; CLIMATE</div>
+      <div class="hed">COP31 Draft: Quit Fossil Fuels Faster</div>
+      <div class="body">Negotiators in Antalya tabled a deal urging a faster fossil-fuel phase-out and climate finance of at least $120bn a year by 2035.</div>
+      <div class="page">PAGE 14 &rsaquo;</div>
+    </div>
+    <div class="card">
+      <img src="assets/mmr.jpg" alt="A gloved hand holding a vaccine vial">
+      <div class="tag">AMERICAS &bull; HEALTH</div>
+      <div class="hed">US Loses Measles-Free Status</div>
+      <div class="body">After about three decades, the US has lost its measles elimination status, PAHO said; Mexico and Bolivia lost theirs too.</div>
+      <div class="page">PAGE 16 &rsaquo;</div>
+    </div>
+    <div class="card">
+      <img class="nv" src="assets/nvidia-logo.png" alt="NVIDIA logo">
+      <div class="tag">US &bull; MARKETS</div>
+      <div class="hed">Nvidia Beats, Markets Slide</div>
+      <div class="body">Nvidia&rsquo;s revenue hit $115.8bn, up 103%, beating forecasts &mdash; its first report since its CEO stepped down. The Dow still fell 849.</div>
+      <div class="page">PAGE 18 &rsaquo;</div>
+    </div>
+  </div>
+
+  <!-- map band -->
+  <div class="mapband">
+    <h2>WHERE IT HAPPENED &nbsp;&mdash;&nbsp; TUESDAY 17 NOVEMBER 2026</h2>
+    <div class="mapflex">
+      <div class="mapwrap">
+        <img src="assets/worldmap.jpg" alt="Satellite map of the world">
+        <span class="pin" style="left:61.2%;top:12.5%">1</span>
+        <span class="pin" style="left:66.6%;top:24%">2</span>
+        <span class="pin" style="left:84.6%;top:37%">3</span>
+        <span class="pin" style="left:57.5%;top:44%">4</span>
+        <span class="pin" style="left:58.5%;top:18.1%">5</span>
+        <span class="pin" style="left:21.7%;top:19%">6</span>
+        <span class="pin" style="left:60.8%;top:39.9%">7</span>
+        <span class="pin" style="left:79.5%;top:16%">8</span>
+        <span class="pin" style="left:55.7%;top:15.3%">9</span>
+        <span class="pin" style="left:89.8%;top:19%">10</span>
+        <span class="pin" style="left:63.5%;top:42.7%">11</span>
+        <span class="pin" style="left:34.8%;top:54%">12</span>
+      </div>
+      <div class="legend">
+        <b>1</b> Crimea &ndash; <b>2</b> Gulf &ndash; <b>3</b> Manila &ndash; <b>4</b> DR Congo &ndash;<br>
+        <b>5</b> Antalya &ndash; <b>6</b> USA &ndash; <b>7</b> Gaza &ndash; <b>8</b> Mongolia &ndash;<br>
+        <b>9</b> Serbia &ndash; <b>10</b> Japan &ndash; <b>11</b> Yemen &ndash; <b>12</b> Paraguay
+      </div>
+    </div>
+  </div>
+
+  <!-- bottom minis -->
+  <div class="minis">
+    <div class="mini">
+      <div class="tag">5 &bull; AI</div>
+      <div class="hed">Nvidia doubles sales, shuts door on Huang</div>
+      <div class="miniflex">
+        <div class="txt">
+          <div class="body">Revenue hit $115.8bn, up 103%.</div>
+          <div class="page">PAGE 20 &rsaquo;</div>
+        </div>
+        <img src="assets/chip.jpg" alt="An Nvidia chip">
+      </div>
+    </div>
+    <div class="mini">
+      <div class="tag">6 &bull; INDIA</div>
+      <div class="hed">Cyclone Akvan bears down on India</div>
+      <div class="miniflex">
+        <div class="txt">
+          <div class="body">The storm is set to hit Andhra Pradesh on Friday.</div>
+          <div class="page">PAGE 22 &rsaquo;</div>
+        </div>
+        <img src="assets/cyclone.jpg" alt="Cyclone Akvan from space">
+      </div>
+    </div>
+    <div class="mini">
+      <div class="tag">7 &bull; HEALTH</div>
+      <div class="hed">America loses its measles-free status</div>
+      <div class="miniflex">
+        <div class="txt">
+          <div class="body">PAHO reports a setback for the US.</div>
+          <div class="page">PAGE 24 &rsaquo;</div>
+        </div>
+        <img src="assets/child-mask.jpg" alt="A boy wearing a face mask">
+      </div>
+    </div>
+    <div class="mini">
+      <div class="tag">8 &bull; HEALTH</div>
+      <div class="hed">Congo Ebola passes 11,000 cases</div>
+      <div class="miniflex">
+        <div class="txt">
+          <div class="body">Six months on, the outbreak continues.</div>
+          <div class="page">PAGE 26 &rsaquo;</div>
+        </div>
+        <img src="assets/ebola-tent.jpg" alt="An Ebola treatment tent">
+      </div>
+    </div>
+    <div class="mini">
+      <div class="tag">9 &bull; SPACE</div>
+      <div class="hed">Voyager 1, one light-day from home</div>
+      <div class="miniflex">
+        <div class="txt">
+          <div class="body">The iconic probe nears the edge.</div>
+          <div class="page">PAGE 28 &rsaquo;</div>
+        </div>
+        <img src="assets/voyager.jpg" alt="Voyager 1 in deep space">
+      </div>
+    </div>
+  </div>
+
+  <!-- ALSO ON -->
+  <div class="also">
+    <h2>ALSO ON TUESDAY 17 NOVEMBER</h2>
+    <div class="alsocols">
+      <div class="alsocol">
+        <p><b>1.</b> <span class="lead">Open Gaza Crossings, Allies Urge</span> &mdash; Britain, Australia, Canada and Italy pressed Israel to open Gaza&rsquo;s crossings for aid; the UN warned of winter cold.</p>
+        <p><b>2.</b> <span class="lead">Mongolia&rsquo;s President to Resign</span> &mdash; President Khurelsukh Ukhnaa said he will step down over railway bribery allegations &mdash; but only if the 126-member parliament accepts it.</p>
+        <p><b>3.</b> <span class="lead">Serbia&rsquo;s Students Take Power</span> &mdash; The Student List was sworn in with 140 of 250 seats, ending 14 years of Vu&#269;i&#263;&rsquo;s SNS rule; parliament held its first sitting of the new term.</p>
+        <p><b>4.</b> <span class="lead">Japan Scrambles Jets</span> &mdash; Japan sent fighter jets up after two suspected Russian aircraft entered its airspace, and lodged a strong protest with Moscow.</p>
+        <p><b>5.</b> <span class="lead">France: Le Pen</span> promises earlier retirement for many if she wins the election.</p>
+      </div>
+      <div class="alsocol">
+        <p><b>6.</b> The EU charges Temu with failing to stop illegal products being sold.</p>
+        <p><b>7.</b> Britain sanctions Israeli settlement firms in a push to protect a two-state solution.</p>
+        <p><b>8.</b> Britain sets out the scope of its UK&ndash;EU summit package ahead of Friday&rsquo;s talks.</p>
+        <p><b>9.</b> Pakistan cuts petrol and diesel prices by Rs2 a litre from today.</p>
+        <p><b>10.</b> The ECO summit in Islamabad adopts Vision 2035, a ten-year roadmap.</p>
+        <p><b>11.</b> Russian strike on Zaporizhzhia kills 40, Ukraine says; an aid-centre strike kills 26.</p>
+        <p><b>12.</b> An Israeli strike on tents in Gaza&rsquo;s Sabra neighbourhood kills three.</p>
+        <p><b>13.</b> India beat Pakistan by one wicket off the last ball in the U19 Asia Cup final.</p>
+        <p><b>14.</b> Germany thrash the Netherlands 5&ndash;0.</p>
+        <p><b>15.</b> Bitcoin stalls below $65,000 after a selloff of more than 15% this month.</p>
+      </div>
+      <div class="alsocol">
+        <p><b>16.</b> European shares fall as Deutsche Bank slides and tech drops before Nvidia&rsquo;s results.</p>
+        <p><b>17.</b> Oil prices are caught between rising Gulf exports and tanker attacks.</p>
+        <p><b>18.</b> Popular websites are hacked in a bid to steal crypto from iPhone users.</p>
+        <p><b>19.</b> Iraq resumes oil flows through the repaired Kirkuk&ndash;Ceyhan pipeline.</p>
+        <p><b>20.</b> Berlin bans a group accused of backing Hezbollah and raids 28 locations.</p>
+        <p><b>21.</b> Six drones are downed over Mecca, Medina and Riyadh within hours, the coalition says.</p>
+        <p><b>22.</b> A Serbian MiG-29 crashes near Stara Pazova; pilot Maj Goran Bulaji&#263; is killed.</p>
+        <p><b>23.</b> Estonia shuts its Russian border after a foiled arson attack on a drone maker.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Every story above happened, or was first reported, on Tuesday 17 November 2026. Contested claims are marked as claims; casualty figures are as reported by the sources named.</div>
+    <div class="src">SOURCES: REUTERS &bull; AP &bull; AFP &bull; BBC &bull; AL JAZEERA &bull; WHO &bull; PAHO &bull; UNITED NATIONS</div>
+  </div>
+
+</div>
+</body>
+</html>
